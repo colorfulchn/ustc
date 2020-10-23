@@ -1,0 +1,125 @@
+//第二次作业
+//author:赵乐
+//SA19204140
+
+//2.3 
+//有头节点
+Status	ListInsertWithHead(LinkList &L, ElemType x){
+    p = L; 
+    // 生成新结点
+    s = (LinkList )malloc(sizeof(LNode));
+    // 空间分配不成功，报错返回	
+    if (s == NULL)
+        exit(OVERFLOW);	
+    
+    //如果表为空表，即只有一个头节点，直接退出循环，此时p为头节点；
+    //如果加入的元素在最后一个，p为链表尾的元素，即p->next==NULL；
+    //本循环完了以后，p为第一个小于x的节点；
+    //本算法没有考虑同样大小的元素的稳定排序；
+    while(p->next != NULL && p->next->data < x) 
+        p = p->next;
+    //将x写入s节点
+    s->data = x;        
+    // 将s节点插入
+    s->next = p->next;  
+    p->next = s;        
+    return OK; 
+}
+
+//无头节点
+Status	ListInsertWithoutHead(LinkList &L, ElemType x){
+    p = L;  
+    // 生成新结点
+    s = (LinkList )malloc(sizeof(LNode));	
+    // 空间分配不成功，报错返回
+    if ( s == NULL )
+        exit(OVERFLOW);	
+    
+    //将x写入s节点
+    s->data = x;        
+
+    //如果L为空表，则直接更改L为s
+    if(L == NULL)
+    {
+        L=s;
+        return OK;
+    }
+    //如果插入的元素是第一个
+    if(p->data <= x)
+    {    
+        s->next = p；
+        L=s;     
+        return OK; 
+    }
+    //如果既不是空表需要插入的元素也不是第一个，则可以把第一个节点看作是头节点
+    //则下面算法与有头节点的算法相同
+    while( p->next != NULL && p->next->data < x ) 
+        p = p->next;
+    // 将s节点插入
+    s->next = p->next;  
+    p->next = s;        
+    return OK; 
+}
+
+//2.4
+//有两种方法：1、先非递减合并AB，再逆置合并后的链表，时间复杂为O(2 (La.length + Lb.length))
+//另外一种方法是：2、在合并的过程中不断的前插，时间复杂度为O（La.length + Lb.length）
+//时间复杂度都是O（n），
+//下面是方法1
+LinkList mergeList(LinkList &La,LinkList &Lb){
+    pa=La->next;
+    pb=Lb->next;
+    //用La的头节点作为Lc的头节点
+    Lc=pc=La;
+    while(pa && pb)
+    {
+        if(pa->data <= pb->data)
+        {
+            pc->next=pa;
+            pc=pa;
+            pa=pa->next;
+        }
+        else
+        {
+            pc->next=pb;
+            pc=pb;
+            pb=pb->next;
+        }
+    }
+    //合并完以后，将La或者Lb剩余的链表接在后面
+    pc->next=pa?pa:pb;
+    //释放Lb的空间
+    free(Lb);
+
+    //对合并以后的链表逆置
+    p=Lc->next;
+    Lc->next=NULL;
+    while(p!=NULL)
+    {
+        q=p;
+        p=p->next;
+        q->next=Lc->next;
+        Lc->next=q;
+    }
+
+    return Lc;
+}
+
+//2.5
+Status deletdThePrenode(LinkList &s){
+    p=s;
+
+    //循环退出时，p->next为待删除节点
+    while(p->next->next != s)
+     p=p->next;
+
+    //对删除节点做标记
+    tmp=p->next;
+    //删除
+    p->next=s;
+    tmp->next=NULL;
+
+    //释放删除节点的内存
+    free(tmp);
+    return OK;
+}

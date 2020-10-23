@@ -1,0 +1,36 @@
+//1##
+//insert
+//author:zhao le
+//SA19204140
+Status Insert_SqList(SqList &La,ElemType x){
+    if(La.length >= La.listsize) //如果数组的长度大于或者等于数组的内存长度，则扩充数组的内存长度
+    {
+        newbase=(ElemType *)realloc(La.elem,(La.listsize+LISTINCREMENT)*sizeof(ElemType));
+        if(!newbase) exit(OVERFLOW);
+        La.elem=newbase;
+        La.listsize+=LISTINCREMENT;
+    }
+
+    for(i=La.length-1;La.elem[i]>x&&i>=0;i--)//把比x大的元素全部后移一个单位
+    La.elem[i+1]=La.elem[i];
+
+    La.elem[i+1]=x; //把x插入
+    La.length++; //数组的长度增加一个单位
+    return OK;
+}
+
+//2##
+//reverse
+//author:zhao le
+//SA19204140
+void Reverse(SqList &array)
+{
+    if(array.length<=1) return;
+    ElemType tmp;
+    for(i=1,j=array.length;i<j;i++,j--) 
+    {
+        tmp=array.elem[i]; //swap两头的元素
+        array.elem[i]=array.elem[j];
+        array.elem[j]=tmp;
+    }
+}
