@@ -187,11 +187,6 @@ vector<string> str_multi_;
     }
     return showthemeau();
 }
-
- void show_delete_multi() {
-    return showthemeau();
-}
-
  void show_n_multi() {
     system("clear");
     cout << "请输入显示多项式的index：" << endl;
@@ -362,10 +357,6 @@ vector<string> str_multi_;
         cin >> keyboard_in;
         switchit(keyboard_in);
         break;
-    case 'c':
-        cin >> keyboard_in;
-        switchit(keyboard_in);
-        break;
     case 'd':         show_n_multi();
         cin >> keyboard_in;
         switchit(keyboard_in);
@@ -399,10 +390,6 @@ vector<string> str_multi_;
         return;
         break;
     default:
-        system("clear");
-        cout << "输入错误,并且输入任意键按回车返回主界面" << endl;
-        cin >> keyboard_in;
-        showthemeau();
         cin >> keyboard_in;
         switchit(keyboard_in);
         break;
