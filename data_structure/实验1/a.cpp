@@ -151,41 +151,12 @@ vector<string> str_multi_;
     return;
 }
 
- void deletemulti() {
-    int index = 1;
-         unordered_set <int> deletelist;
-         while (index >= 0) {
-        cin >> index;
-                 if (index >= (int)multi_.size())
-            continue;
-        else
-            deletelist.insert(index);
-    }
-         vector<map<float, float>> tmp;
-    vector<string> tmp1;
-    for (int i = 0; i < (int)multi_.size(); ++i)
-    {
-        if (deletelist.count(i))
-            continue;
-        else
-        {
-            tmp.push_back(multi_[i]);
-            tmp1.push_back(str_multi_[i]);
-        }
-    }
-    multi_.clear();
-    multi_ = tmp;
-    str_multi_.clear();
-    str_multi_ = tmp1;
-    return;
-}
 
  void showthemeau() {
     system("clear");
     cout << "功能：" << endl;
     cout << "a：创建新的多项式：" << endl;
     cout << "b：显示当前所有的多项式" << endl;
-    cout << "c：删除多项式" << endl;
     cout << "d：显示第n个多项式" << endl;
 
     cout << "e：微分" << endl;
@@ -200,7 +171,7 @@ vector<string> str_multi_;
 
  void show_amulti() {
     system("clear");
-    cout << "请输入输入多项式的个数（返回主界面按0以后敲回车）：" << endl;
+    cout << "请输入输入多项式的个数：" << endl;
     int num = 0;
     cin >> num;
     if (num <= 0)
@@ -218,15 +189,6 @@ vector<string> str_multi_;
 }
 
  void show_delete_multi() {
-    system("clear");
-    show_all_multi();
-    cout << "请输入你要删除的多项式的序号(以-1结束，示例：0 -1敲回车)：" << endl;
-    deletemulti();
-    cout << "删除以后的多项式为：" << endl;
-    show_all_multi();
-    cout << "按任何键返回主界面" << endl;
-    char keyboard_in;
-    cin >> keyboard_in;
     return showthemeau();
 }
 
@@ -400,7 +362,7 @@ vector<string> str_multi_;
         cin >> keyboard_in;
         switchit(keyboard_in);
         break;
-    case 'c':         show_delete_multi();
+    case 'c':
         cin >> keyboard_in;
         switchit(keyboard_in);
         break;
