@@ -153,7 +153,7 @@ vector<string> str_multi_;
 
 
  void showthemeau() {
-    system("clear");
+    system("clr");
     cout << "功能：" << endl;
     cout << "a：创建新的多项式：" << endl;
     cout << "b：显示当前所有的多项式" << endl;
@@ -170,7 +170,7 @@ vector<string> str_multi_;
 }
 
  void show_amulti() {
-    system("clear");
+    system("clr");
     cout << "请输入输入多项式的个数：" << endl;
     int num = 0;
     cin >> num;
@@ -188,7 +188,7 @@ vector<string> str_multi_;
     return showthemeau();
 }
  void show_n_multi() {
-    system("clear");
+    system("clr");
     cout << "请输入显示多项式的index：" << endl;
     int len = str_multi_.size() - 1;
     cout << "index的范围为0～" << len << endl;
@@ -202,7 +202,7 @@ vector<string> str_multi_;
 }
 
  void show_diff() {
-    system("clear");
+    system("clr");
     int len = str_multi_.size() - 1;
     cout << "请输入你要进行微分的多项式的index(0~" << len << "):" << endl;
     int index = -1;
@@ -220,7 +220,7 @@ vector<string> str_multi_;
 }
 
  void show_inte() {
-    system("clear");
+    system("clr");
     int len = str_multi_.size() - 1;
     cout << "请输入你要进行不定积分的多项式的index(0~" << len << "):" << endl;
     int index = -1;
@@ -238,7 +238,7 @@ vector<string> str_multi_;
 }
 
  void show_definite_integral() {
-    system("clear");
+    system("clr");
     int len = str_multi_.size() - 1;
     cout << "请输入你要进行定积分的多项式的index(0~" << len << "):" << endl;
     int index = -1;
@@ -257,7 +257,7 @@ vector<string> str_multi_;
 }
 
  void show_Nth_power() {
-    system("clear");
+    system("clr");
     int len = str_multi_.size() - 1;
     cout << "请输入你要进行乘方的多项式的index(0~" << len << "):" << endl;
     int index = -1;
@@ -285,7 +285,7 @@ vector<string> str_multi_;
 }
 
  void show_multiply() {
-    system("clear");
+    system("clr");
     vector<int> index;
     int len = str_multi_.size() - 1;
     cout << "示例：0 1 0 -1回车" << endl;
@@ -314,7 +314,7 @@ vector<string> str_multi_;
 }
 
  void show_add2multi() {
-    system("clear");
+    system("clr");
     vector<int> index;
     int len = str_multi_.size() - 1;
     cout << "示例：0 1 0 -1回车" << endl;
@@ -349,7 +349,7 @@ vector<string> str_multi_;
         cin >> keyboard_in;
         switchit(keyboard_in);
         break;
-    case 'b':         system("clear");
+    case 'b':         system("clr");
         show_all_multi();
         cout << "输入任意键敲回车返回主界面" << endl;
         cin >> keyboard_in;
@@ -386,7 +386,7 @@ vector<string> str_multi_;
         switchit(keyboard_in);
         break;
     case 'z':         cout << "谢谢使用" << endl;
-        system("clear");
+        system("clr");
         return;
         break;
     default:
